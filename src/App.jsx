@@ -4,9 +4,14 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+
+import Articles from "./pages/Articles";
+import ArticleForm from "./pages/ArticleForm";
+
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import VerifyOtp from "./pages/VerifyOtp";
-
 export default function App() {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -21,7 +26,14 @@ export default function App() {
           <Route path="/verify-otp" element={<VerifyOtp />} />
           
 
-         
+          {/* Routes protégées */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+           
+            <Route path="/articles" element={<Articles />} />
+            <Route path="/articles/new" element={<ArticleForm />} />
+            
+          </Route>
         </Routes>
       </div>
     </div>
